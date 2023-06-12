@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="timer.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="main">
+        <div class="top">
+            <i class="fa-sharp fa-solid fa-hourglass"></i>
+            <h1>Timer</h1>
+        </div>
+
+        <!-- MINUTOS Y SEGUNDOS DEL CONTADOR-------------------------- -->
+        <div class="container">
+            <div class="container__boxminutes">
+                <p id="minutes" class="container__minutes">--</p>
+            </div>
+            <div class="container__boxtext">
+                <p>:</p>
+            </div>
+            <div class="container__boxseconds">
+                <p id="seconds" class="container__seconds">--</p>
+            </div>
+            <!-- BOTONES PARA DETENER Y CONTINUAR LA FUNCION-------------- -->
+        </div>
+        <!-- seccion de los botones stop y play -->
+        <div class="container__btns">
+            <button id="stop" class="container__btnstop container__btn">Stop</button>
+            <button id="play" class="container__btnplay container__btn">Play</button>
+            <button id="restar" class="container__btnrestar container__btn">Restar</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="copyright">
+
+            <p class="copyright__copyr">Todos los derechos reservados</p>
+            <p class="copyright__autor">Pagina web hecho por <a class="copyright__link" target="_blank" href="https://twitter.com/KevinMo00961107"> Kevin Moreno</a></p>
+        
+        </div>
+    </footer>
+    
+    <script src="https://kit.fontawesome.com/35c4ed722d.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+</html>
