@@ -21,6 +21,9 @@ funciones, intervalos, condicionadores if. la funcion de este codigo crea una cu
 
 -------------------------------------------------------------------------------------------------------------
 
+El Codigo II: 25/08/2023
+
+re realizaron actualizaciones; mejora en los botones de play, stop y restar, se agrego el boton update que actualiza el numero que utilizara el timer, se actualizo nuevos color para los ultimos 9 segundos, se restringio la cantidad de numeros permitidos y en general se reacomodo el codigo para su facil entendimiento.
 
 
 

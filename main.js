@@ -3,42 +3,96 @@ let seconds = document.getElementById("seconds");
 let stop = document.getElementById("stop");
 let play = document.getElementById("play");
 let restar = document.getElementById("restar");
-
+let inputmin = document.getElementById("inputmin");
+let inputseg = document.getElementById("inputseg");
+let update = document.getElementById("update");
+let alertred = document.querySelector(".alertred");
+// let replay = document.getElementById("replay");
+let config = document.getElementById("config");
+let main = document.getElementById("main");
 // asginamos variables para establecer un tiempo determinado
-// WARNING - codificar inserciones de variables por el usuario
-let sec = 0;
-let min = 5;
-
+let sec;
+let min;
 // integramos una variable en comun para detener y continuar
 let inter;
 let inter2;
 
-// ocultamos el boton de restar
-restar.style.display = "none"
+// ocultamos el boton de restar, tambien el div#main
+// restar.style.display = "none"
 stop.style.display = "none"
+main.style.display = "none"
 
-// agregamos las funciones de play, stop y restar
+// agregamos las funciones de play, stop y restar, agregamos update para actaulizar los minutos y los segundos
 stop.addEventListener("click", stopchronometer);
 play.addEventListener("click", playchronometer);
 restar.addEventListener("click", restarchronometer)
+update.addEventListener("click",updates);
+
+        
+
+
+
+// se actualiza el tiempo designado
+function updates(){
+    let textmin = inputmin.value;
+    let textsec = inputseg.value;
+    
+    console.log(`${textmin} Minutos Actualizados`)
+    console.log(`${textsec} Segundos Actualizados`)
+
+    min = textmin
+    sec = textsec
+    main.style.display = "flex"
+    config.style.display = "none"
+
+    parameters()
+
+}
+
+function parameters(){
+    if(inputmin.value >= 60){
+        console.log('Es mayor a 60')
+        alert('El numero no debe ser ni superar los 60 minutos')
+        inputmin.value = ''
+        restarchronometer()
+    } else{
+        console.log('El Digito Es Correcto')
+    }
+    if(inputseg.value >= 60){
+        console.log('Es mayor a 60')
+        alert('El numero no debe ser ni superar los 60 segundos')
+        inputseg.value = ''
+        restarchronometer()
+    } else{
+        console.log('El Digito Es Correcto')
+    }
+}
 
 // se implementa la funcion de restar que reinicia el contador
 function restarchronometer(){
-    min = 5;
-    sec = 0;
-    playchronometer()
-    restar.style.display = "none"
     console.log("se ejecuta restar")
+    
+    min = '--';
+    sec = '--';
+    config.style.display = "flex"
+    main.style.display = "none"
+    alertred.style.color = "#ffffff";
+    
+    stopchronometer()
+    replay()
+    // restar.style.display = "none"
 }
 
-
-
+function replay(){
+    minutes.innerHTML = min
+    seconds.innerHTML = sec
+}
 
 // empezamos la funcion del cronometro y escondemos el boton play
 function playchronometer(){
     
     play.style.display = "none";
-    stop.style.display = "block";
+    stop.style.display = "inline";
     
     if(min > -1){
         segundos()
@@ -47,29 +101,46 @@ function playchronometer(){
         
     }
 }
+
 function segundos(){
     inter = setInterval(() => {
         // mostramos los segundos en pantalla(document) e indicamos el reinicio de los segundos
         seconds.innerHTML = sec;
-        if(sec < 10){
+
+        
+        if(sec == ''){
+            seconds.innerHTML = "0" + "0";
+        }else if(sec < 10){
             seconds.innerHTML = "0" + sec;
+            console.log('Alerta Roja')
+            alertred.style.color = "#FF0000";
+            
         }
+        
+        
         if(sec == 0){
             sec = 59;
-        
+            
         }else{
             sec--;
             console.log("se ejecuta seconds");
+            
         }
+        
+
+
     }, 1000);
 }
         // mostramos los minutos en pantalla(document) e indicamos la finalizacion del programa
 function minutos(){
     inter2 = setInterval(() => {
         minutes.innerHTML = min;
-        if(min < 10){
+        if(min == ''){
+            minutes.innerHTML = "0" + "0";
+        }else if(min < 10){
             minutes.innerHTML = "0" + min;
         }
+
         if(sec == 59){
             min--;
             console.log("se ejecuta minutes")
@@ -79,8 +150,10 @@ function minutos(){
             seconds.innerHTML = "00";
             minutes.innerHTML = "00";
             play.style.display = "none";
-            restar.style.display = "block"
+            restar.style.display = "inline"
         }
+
+
     }, 1000);
     
 }
@@ -89,7 +162,7 @@ function minutos(){
 function stopchronometer(){
 
     stop.style.display = "none";
-    play.style.display = "block";
+    play.style.display = "inline";
 
     clearInterval(inter);
     clearInterval(inter2);
@@ -97,6 +170,7 @@ function stopchronometer(){
     sec = sec;
     console.log("se ejecuta stop");
 }
+
 
 
 

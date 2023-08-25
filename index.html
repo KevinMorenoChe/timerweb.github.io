@@ -9,30 +9,51 @@
     <link rel="shortcut icon" href="timer.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="main">
+    <div class="main alertred">
         <div class="top">
             <i class="fa-sharp fa-solid fa-hourglass"></i>
             <h1>Timer</h1>
         </div>
+        <!-- ASIGNACION DE MINUTOS Y SEGUNDOS DEL CONTADOR ------------->
+        <div id="config" class="container config">
+
+            <div class="container__inputs">
+                <label for="">Digite los Minutos</label>
+                <input id="inputmin" class="container__input" type="number" min="1" max="59">
+                <label for="">Digite los Segundos</label>
+                <input id="inputseg" class="container__input" type="number" min="1" max="59">
+
+            </div>
+            <div class="container__buttons">
+
+                <button id="update" class="container__btn">Update</button>
+                <button id="replay" class="container__btn">RePlay</button>
+
+            </div>
+            
+        </div>
 
         <!-- MINUTOS Y SEGUNDOS DEL CONTADOR-------------------------- -->
-        <div class="container">
-            <div class="container__boxminutes">
-                <p id="minutes" class="container__minutes">--</p>
+        <div id="main" class="container content">
+            <div class="container__main">
+
+                <div class="container__boxminutes">
+                    <p id="minutes" class="container__minutes">--</p>
+                </div>
+                <div class="container__boxtext">
+                    <p>:</p>
+                </div>
+                <div class="container__boxseconds">
+                    <p id="seconds" class="container__seconds">--</p>
+                </div>
             </div>
-            <div class="container__boxtext">
-                <p>:</p>
+                <!-- BOTONES PARA DETENER Y CONTINUAR LA FUNCION-------------- -->
+                <!-- seccion de los botones stop y play -->
+                <div class="container__btns">
+                <button id="stop" class="container__btnstop container__btn">Stop</button>
+                <button id="play" class="container__btnplay container__btn">Play</button>
+                <button id="restar" class="container__btnrestar container__btn">Restar</button>
             </div>
-            <div class="container__boxseconds">
-                <p id="seconds" class="container__seconds">--</p>
-            </div>
-            <!-- BOTONES PARA DETENER Y CONTINUAR LA FUNCION-------------- -->
-        </div>
-        <!-- seccion de los botones stop y play -->
-        <div class="container__btns">
-            <button id="stop" class="container__btnstop container__btn">Stop</button>
-            <button id="play" class="container__btnplay container__btn">Play</button>
-            <button id="restar" class="container__btnrestar container__btn">Restar</button>
         </div>
     </div>
 
