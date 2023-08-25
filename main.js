@@ -7,6 +7,7 @@ let inputmin = document.getElementById("inputmin");
 let inputseg = document.getElementById("inputseg");
 let update = document.getElementById("update");
 let alertred = document.querySelector(".alertred");
+var audio = document.getElementById("audio");
 // let replay = document.getElementById("replay");
 let config = document.getElementById("config");
 let main = document.getElementById("main");
@@ -27,6 +28,7 @@ stop.addEventListener("click", stopchronometer);
 play.addEventListener("click", playchronometer);
 restar.addEventListener("click", restarchronometer)
 update.addEventListener("click",updates);
+audio.loop;
 
         
 
@@ -39,21 +41,20 @@ function updates(){
     
     console.log(`${textmin} Minutos Actualizados`)
     console.log(`${textsec} Segundos Actualizados`)
-
+    
     min = textmin
     sec = textsec
     main.style.display = "flex"
     config.style.display = "none"
-
+    
     parameters()
-
+    
 }
 
 function parameters(){
     if(inputmin.value >= 60){
         console.log('Es mayor a 60')
         alert('El numero no debe ser ni superar los 60 minutos')
-        inputmin.value = ''
         restarchronometer()
     } else{
         console.log('El Digito Es Correcto')
@@ -61,7 +62,6 @@ function parameters(){
     if(inputseg.value >= 60){
         console.log('Es mayor a 60')
         alert('El numero no debe ser ni superar los 60 segundos')
-        inputseg.value = ''
         restarchronometer()
     } else{
         console.log('El Digito Es Correcto')
@@ -77,6 +77,9 @@ function restarchronometer(){
     config.style.display = "flex"
     main.style.display = "none"
     alertred.style.color = "#ffffff";
+    inputmin.value = ''
+    inputseg.value = ''
+    audio.pause();
     
     stopchronometer()
     replay()
@@ -93,6 +96,7 @@ function playchronometer(){
     
     play.style.display = "none";
     stop.style.display = "inline";
+
     
     if(min > -1){
         segundos()
@@ -106,15 +110,15 @@ function segundos(){
     inter = setInterval(() => {
         // mostramos los segundos en pantalla(document) e indicamos el reinicio de los segundos
         seconds.innerHTML = sec;
-
+        
         
         if(sec == ''){
             seconds.innerHTML = "0" + "0";
         }else if(sec < 10){
             seconds.innerHTML = "0" + sec;
+        }else if(min < 1 && sec < 11){
             console.log('Alerta Roja')
-            alertred.style.color = "#FF0000";
-            
+            alertred.style.color = "#FF0000";   
         }
         
         
@@ -127,11 +131,11 @@ function segundos(){
             
         }
         
-
-
+        
+        
     }, 1000);
 }
-        // mostramos los minutos en pantalla(document) e indicamos la finalizacion del programa
+// mostramos los minutos en pantalla(document) e indicamos la finalizacion del programa
 function minutos(){
     inter2 = setInterval(() => {
         minutes.innerHTML = min;
@@ -140,7 +144,7 @@ function minutos(){
         }else if(min < 10){
             minutes.innerHTML = "0" + min;
         }
-
+        
         if(sec == 59){
             min--;
             console.log("se ejecuta minutes")
@@ -151,9 +155,10 @@ function minutos(){
             minutes.innerHTML = "00";
             play.style.display = "none";
             restar.style.display = "inline"
+            audio.play();
         }
-
-
+        
+        
     }, 1000);
     
 }
