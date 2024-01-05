@@ -1,0 +1,26 @@
+@use 'colors'
+    
+.navbox
+    background-color: colors.$color-white
+.nav
+    display: flex
+    justify-content: center
+    width: 700px
+    margin: auto
+    &__btn
+        padding: 0px 20px
+        font-family: 'Sacramento', cursive
+        font-size: 48px
+        font-weight: bold
+        border: none
+        background-color: colors.$color-white
+        transition: 0.3s
+        
+        &:hover
+            transition: 0.3s
+            background-color: colors.$color-bg
+    &__active
+        display: block
+        background-color: colors.$color-bg
+
+

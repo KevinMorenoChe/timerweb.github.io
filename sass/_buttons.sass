@@ -1,0 +1,15 @@
+@use 'colors'
+@mixin btnstandar
+    cursor: pointer
+    padding: 5px 20px
+    margin: 0px
+    border: none
+    background-color: colors.$color-bg
+    font-family: 'Sacramento', cursive
+    font-size: 32px
+    font-weight: bold
+    box-shadow: 1px 1px 7px colors.$color-primary, -1px -1px 7px colors.$color-primary, -1px 1px 7px colors.$color-primary, 1px -1px 7px colors.$color-primary
+    border-radius: 10px
+    &:active
+        color: colors.$color-bg2
+        box-shadow: inset 1px 1px 7px colors.$color-primary, inset -1px -1px 7px colors.$color-primary, inset -1px 1px 7px colors.$color-primary, inset 1px -1px 7px colors.$color-primary

@@ -1,0 +1,30 @@
+@use 'colors'
+@use 'buttons'
+.bodytimer
+    color: colors.$color-primary
+    padding: 30px
+    display: flex
+    flex-direction: column
+    width: 600px
+    margin: auto
+    &__header
+        display: flex
+        justify-content: center
+    &__timer
+        margin: 15px
+        box-sizing: border-box
+        width: 700px
+        font-size: 128px
+        text-align: center
+        border: none
+        border-radius: 10px
+        &::-webkit-calendar-picker-indicator
+            display: none
+            // background: none
+    &__main
+        width: 100%
+        display: flex
+        justify-content: space-evenly
+        align-items: center
+    &__btnstandar
+        @include buttons.btnstandar

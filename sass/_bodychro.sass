@@ -1,0 +1,24 @@
+@use 'colors'
+@use 'buttons'
+    
+.bodychro
+    color: colors.$color-primary
+    padding: 30px
+    display: flex
+    flex-direction: column
+    width: 600px
+    margin: auto
+
+    &__hms
+        font-size: 128px
+    &__box
+        width: 100%
+        display: flex
+        justify-content: space-evenly
+        align-items: center
+    &__play
+         @include buttons.btnstandar
+    &__stop
+         @include buttons.btnstandar
+    &__restart
+         @include buttons.btnstandar
