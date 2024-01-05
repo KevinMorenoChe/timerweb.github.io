@@ -1,77 +1,67 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OldTimer</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="timer.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/timer.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Space+Grotesk&family=Warnes&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Relojeria KEMC</title>
 </head>
-<body>
-    <div class="main alertred">
-        <div class="top">
-            <i class="fa-sharp fa-solid fa-hourglass"></i>
-            <h1>Timer</h1>
-        </div>
-        <!-- ASIGNACION DE MINUTOS Y SEGUNDOS DEL CONTADOR ------------->
-        <div id="config" class="container config">
-
-            <div class="container__inputs">
-                <label for="">Digite los Minutos</label>
-                <input id="inputmin" class="container__input" type="number" min="1" max="59">
-                <label for="">Digite los Segundos</label>
-                <input id="inputseg" class="container__input" type="number" min="1" max="59">
-
-            </div>
-            <div class="container__buttons">
-
-                <button id="update" class="container__btn">Update</button>
-                <button id="replay" class="container__btn">RePlay</button>
-
-            </div>
-            
-        </div>
-
-        <!-- MINUTOS Y SEGUNDOS DEL CONTADOR-------------------------- -->
-        <div id="main" class="container content">
-            <div class="container__main">
-
-                <div class="container__boxminutes">
-                    <p id="minutes" class="container__minutes">--</p>
-                </div>
-                <div class="container__boxtext">
-                    <p>:</p>
-                </div>
-                <div class="container__boxseconds">
-                    <p id="seconds" class="container__seconds">--</p>
-                </div>
-            </div>
-                <!-- BOTONES PARA DETENER Y CONTINUAR LA FUNCION-------------- -->
-                <!-- seccion de los botones stop y play -->
-                <div class="container__btns">
-                <button id="stop" class="container__btnstop container__btn">Stop</button>
-                <button id="play" class="container__btnplay container__btn">Play</button>
-                <button id="restar" class="container__btnrestar container__btn">Restar</button>
-
-                <audio id="audio" controls>
-                    <source type="audio/wav" src="alarma.mp4">
-                    </audio>
-
+<body onload="starTime(),chronometer(),timer()">
+    <main>
+        <div class="navbox">
+            <div class="nav">
+                <button class="nav__btn nav__active" id="btn1">Clock</button>
+                <button class="nav__btn" id="btn2">Chronometer</button>
+                <button class="nav__btn" id="btn3">Timer</button>
             </div>
         </div>
-    </div>
 
+        <div class="bodybox" id="box1">
+            <div class="bodyclock">
+                <p class="bodyclock__content" id="year"></p>
+                <div class="bodyclock__content">
+                    <p class="bodyclock__time" id="time"></p>
+                </div>
+                <p class="bodyclock__content" id="days"></p>
+            </div>
+        </div>
+
+        <div class="bodybox" id="box2">
+            <div class="bodychro">
+                <div class="bodychro__hms" id="bodychro__hms">00:00:00</div>
+                <div class="bodychro__box">
+                    <button class="bodychro__play" id="bodychro__play">Play</button>
+                    <button class="bodychro__stop" id="bodychro__stop">Stop</button>
+                    <button class="bodychro__restart" id="bodychro__restart">Restart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bodybox read" id="box3"">
+            <div class="bodytimer">
+                <div class="bodytimer__header">
+                    <input class="bodytimer__timer" step="2" type="time" name="timer" id="hmstime">
+                </div>
+                <div class="bodytimer__main">
+                    <button class="bodytimer__btnstandar" id="bodytimer__start">Start</button>
+                    <button class="bodytimer__btnstandar" id="bodytimer__stop">Stop</button>
+                    <button class="bodytimer__btnstandar" id="bodytimer__restart">Restart</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
     <footer>
-        <div class="copyright">
-
-            <p class="copyright__copyr">All rights reserved</p>
-            <p class="copyright__autor">Website made by <a class="copyright__link" target="_blank" href="https://twitter.com/KevinMo00961107"> Kevin Moreno</a></p>
-        
+        <div class="foot">
+            <p class="foot__content">Website made by Kevin Enrique Moreno Che</p>
+            <p class="foot__content">All rights reserved</p>
         </div>
     </footer>
-    
-    <script src="https://kit.fontawesome.com/35c4ed722d.js" crossorigin="anonymous"></script>
+
     <script src="main.js"></script>
 </body>
 </html>
