@@ -158,68 +158,121 @@ function chronometer(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function timer(){
 
-    let hmstime = document.getElementById("hmstime");
-    let stop = document.getElementById("bodytimer__stop");
+    let htime = document.getElementById("htime");
+    let mtime = document.getElementById("mtime");
+    let stime = document.getElementById("stime");
     let play = document.getElementById("bodytimer__start");
-    let restar = document.getElementById("bodyrimer__restart");
+    let stop = document.getElementById("bodytimer__stop");
+    let restar = document.getElementById("bodytimer__restart");
+    let intervaltimer;
     
-    let hms = hmstime.value
-
-    let hours = hms.split(':')[0]
-    let minutes = hms.split(':')[1]
-    let seconds = hms.split(':')[2] 
-
-
-
-    console.log(hms)
-    console.log(hours+' horas')
-    console.log(minutes+' minutos')
-    console.log(seconds+' segundos')
-
     play.addEventListener('click',playtimer);
+    stop.addEventListener('click',stoptimer);
+    restar.addEventListener('click',restartimer);
+    stime.addEventListener('click',inputsfocus)
+    mtime.addEventListener('click',inputsfocus)
+    htime.addEventListener('click',inputsfocus)
+    
+    htime.onkeyup = function() {lettersnan()};
+    mtime.onkeyup = function() {lettersnan()};
+    stime.onkeyup = function() {lettersnan()};
+    function lettersnan(){
+        let hvalue = htime.value
+        let mvalue = mtime.value
+        let svalue = stime.value
+        if(hvalue>23 || isNaN(hvalue) == true){htime.value=''}else if(htime.value.length == htime.getAttribute('maxlength')){mtime.focus()}
+        if(mvalue>59 || isNaN(mvalue) == true){mtime.value=''}else if(mtime.value.length == mtime.getAttribute('maxlength')){stime.focus()}
+        if(svalue>59 || isNaN(svalue) == true){stime.value=''}else if(stime.value.length == stime.getAttribute('maxlength')){}
 
+    }
+    
+    function inputsfocus(){
+        console.log('focus')
+        deletetime()
+    }
+
+    function deletetime() {
+        clearInterval(intervaltimer)
+        stime.value=''
+        mtime.value=''
+        htime.value=''
+
+        play.disabled=false
+        stop.disabled=false
+    }
+    
+    
     function playtimer(){
-        hms = hmstime.value
+        console.log('play activado')
+        intervaltimer = setInterval(playnumbers, 1000);
+
+        play.disabled=true
+        stop.disabled=false
+        restar.disabled=false
+        }
+            
+    function stoptimer(){
+        console.log('stop activado')
+        clearInterval(intervaltimer)
+
+        play.disabled=false
+        stop.disabled=true
+        restar.disabled=false
+        }
         
-        let hours = hms.split(':')[0]
-        let minutes = hms.split(':')[1]
-        let seconds = hms.split(':')[2] 
-        let intervaltimer = setInterval(timetimer, 1000);
+    function restartimer(){
+        console.log('restar activado')
+        stoptimer()
+        stime.value=''
+        mtime.value=''
+        htime.value=''
+
+        play.disabled=false
+        stop.disabled=false
+        restar.disabled=true
+        }
+
+    function playnumbers(){
+        let seconds=stime.value;
+        let minutes=mtime.value;
+        let hours=htime.value;
+
+        modifytime()
 
         
-        function timetimer(){
-            let secaux
-            let minaux
-            let houraux
-
+        function modifytime(){
+  
             seconds--
+            
+            if (seconds==''||seconds<'00'){seconds='00'}
+            if (minutes==''){minutes='00'}
+            if (hours==''){hours='00'}
 
             
-            if(seconds <= 9 || >= 1 ){secaux = '0' + seconds}else{secaux = seconds}
-            if(minutes <= 9){minaux = '0' + minutes}else{minaux = minutes}
-            if(hours <= 9){houraux = '0' + hours}else{houraux = hours}
+            if(seconds<='00'&&minutes=='00'&&hours=='00'){stoptimer();seconds='00'}
+            if(seconds=='00'&&minutes=='00'&&hours>'00'){hours--;seconds=59;minutes=59}
+            if(seconds=='00'&&minutes>'00'){minutes--;seconds=59}
 
-            if(seconds < '00'){minutes--; seconds='59'}
-            // if(minutes < '00'){hours--; minutes='59'}
+            let sec= seconds<'10'&&seconds>'00' ? '0'+seconds:seconds;
+            let min = minutes>'9'||minutes.length==2 ? minutes:'0'+minutes;
+            let hou = hours>'9'||hours.length==2 ? hours:'0'+hours; 
             
             
-            hmstime.value = [`${houraux}:${minaux}:${secaux}`];
-            
-            hms = hmstime.value
-            
-            console.log(hms)
-            console.log(hours+' horas')
-            console.log(minutes+' minutos')
-            console.log(seconds+' segundos')
+            console.log(seconds)
+            console.log(minutes)
+            console.log(hours)
 
-            if(hmstime.value=='00:00:00'){clearInterval(intervaltimer)}
+
+            stime.value=sec
+            mtime.value=min
+            htime.value=hou     
+
         }
-
-
-
-        }
-
-
+    }
+    
+    
+    
+    
 }
 
-    
+

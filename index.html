@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/timer.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Space+Grotesk&family=Warnes&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@1,300&family=Sacramento&family=Space+Grotesk&family=Warnes&display=swap" rel="stylesheet">
     <title>Relojeria KEMC</title>
 </head>
 <body onload="starTime(),chronometer(),timer()">
@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <div class="bodybox" id="box1">
+        <div class="bodybox read" id="box1">
             <div class="bodyclock">
                 <p class="bodyclock__content" id="year"></p>
                 <div class="bodyclock__content">
@@ -34,17 +34,22 @@
             <div class="bodychro">
                 <div class="bodychro__hms" id="bodychro__hms">00:00:00</div>
                 <div class="bodychro__box">
-                    <button class="bodychro__play" id="bodychro__play">Play</button>
+                    <button class="bodychro__play" id="bodychro__play">Start</button>
                     <button class="bodychro__stop" id="bodychro__stop">Stop</button>
                     <button class="bodychro__restart" id="bodychro__restart">Restart</button>
                 </div>
             </div>
         </div>
 
-        <div class="bodybox read" id="box3"">
+        <div class="bodybox" id="box3"">
             <div class="bodytimer">
                 <div class="bodytimer__header">
-                    <input class="bodytimer__timer" step="2" type="time" name="timer" id="hmstime">
+                    <input type="text" class="bodytimer__timer" id="htime" maxlength="2" placeholder="00">
+                    <p class="bodytimer__letters">h</p>
+                    <input type="text" class="bodytimer__timer" id="mtime" maxlength="2" placeholder="00">
+                    <p class="bodytimer__letters">m</p>
+                    <input type="text" class="bodytimer__timer" id="stime" maxlength="2"  placeholder="00">
+                    <p class="bodytimer__letters">s</p>
                 </div>
                 <div class="bodytimer__main">
                     <button class="bodytimer__btnstandar" id="bodytimer__start">Start</button>
